@@ -2,9 +2,13 @@ package codility;
 
 public class GenomicRangeQuery {
     public static void main(String[] args) {
+        String S = "CAGCCTA";
+        char[] seqs = S.toCharArray();
+        int[] P = {2, 5, 0};
+        int[] Q = {4, 5, 6};
+
         int M = P.length;
 
-        char[] seqs = S.toCharArray();
         int[] result = new int[M];
 
         for (int i = 0; i < M; i++) {
