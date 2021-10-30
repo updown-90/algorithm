@@ -1,4 +1,4 @@
-package codility;
+package live;
 
 import java.util.Arrays;
 
