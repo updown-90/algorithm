@@ -3,7 +3,7 @@ package baekjoon;
 import java.util.*;
 
 
-// https://www.acmicpc.net/problem/23091
+// https://www.acmicpc.net/problem/2309
 public class Problem2309 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
