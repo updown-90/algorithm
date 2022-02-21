@@ -1,57 +1,34 @@
 package baekjoon;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
-
-// https://www.acmicpc.net/problem/2309
 public class Problem2309 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        int[] totalDwarfArr = new int[9];
-        boolean[] visited = new boolean[totalDwarfArr.length];
+        int[] dwarfArr = new int[9];
 
-        for (int i = 0; i < 9; i++) {
-            totalDwarfArr[i] = sc.nextInt();
+        int sum = 0;
+        for (int i = 0; i < dwarfArr.length; i++) {
+            dwarfArr[i] = sc.nextInt(); // 아홉 난쟁이들을 하나씩 받아서 배열에 넣는다
+            sum += dwarfArr[i]; // 아홉 난쟁이들의 총 합을 구한다
         }
 
-        Problem2309.combination(totalDwarfArr, visited, 0, 9, 7);
-    }
+        Arrays.sort(dwarfArr); // 오름차순 정렬한다
 
-    // 백트래킹 사용
-    // 사용 예시 : combination(arr, visited, 0, n, r)
-    static void combination(int[] arr, boolean[] visited, int start, int n, int r) {
-        if (r == 0) {
-            print(arr, visited, n);
-            return;
-        }
-
-        for (int i = start; i < n; i++) {
-            visited[i] = true;
-            combination(arr, visited, i + 1, n, r - 1);
-            visited[i] = false;
-        }
-    }
-
-    // 배열 출력
-    static void print(int[] arr, boolean[] visited, int n) {
-        int result = 0;
-        List<Integer> resultList = new ArrayList<>();
-
-        for (int i = 0; i < n; i++) {
-            if (visited[i]) {
-                result += arr[i];
-                resultList.add(arr[i]);
+        // 아홉개의 난쟁이 배열에서 2개의 엘리먼트를 뽑고 총 합에서 그 2개의 엘리먼트를 제외한 수가 100 과 같으면 두 수만 제외하고 다 출력
+        for (int i = 0; i < dwarfArr.length; i++) {
+            for (int j = i + 1; j < dwarfArr.length; j++) {
+                if (sum - dwarfArr[i] - dwarfArr[j] == 100) {
+                    for (int i1 : dwarfArr) {
+                        if (i1 != dwarfArr[i] && i1 != dwarfArr[j]) {
+                            System.out.println(i1);
+                        }
+                    }
+                    System.exit(0);
+                }
             }
-        }
-
-        Collections.sort(resultList);
-
-        if (result == 100) {
-            for (int i : resultList) {
-                System.out.println(i);
-            }
-            System.exit(0);
         }
     }
 }
