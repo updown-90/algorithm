@@ -9,6 +9,12 @@ public class Problem2839 {
         int inputValue = sc.nextInt();
 
         int returnValue = 0;
+
+        if (inputValue % 3 != 0 && inputValue % 5 != 0) {
+            System.out.println("-1");
+            return;
+        }
+
         if (inputValue / 5 > 0) {
             returnValue += inputValue / 5;
             inputValue = inputValue % 5;
@@ -20,8 +26,9 @@ public class Problem2839 {
         }
 
         if (inputValue != 0) {
-            System.out.println("-1");
-            return;
+            returnValue++;
+        } else {
+
         }
 
         System.out.println(returnValue);

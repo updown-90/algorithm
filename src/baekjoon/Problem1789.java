@@ -1,20 +1,22 @@
 package baekjoon;
 
-import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Problem1789 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Scanner sc = new Scanner(System.in);
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //선언
 
-        long inputValue = sc.nextLong();
 
-        int sum = 0;
-        int count = 0;
+        long inputValue = Long.parseLong(br.readLine());
 
-        while (sum < inputValue) {
-            sum = sum + count + 1;
-            count++;
+        long sum = 0;
+        long count = 0;
+
+        while (sum <= inputValue) {
+            sum += ++count;
         }
 
         System.out.println(count - 1);
