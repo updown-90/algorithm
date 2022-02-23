@@ -5,24 +5,33 @@ import java.util.*;
 public class Problem1157 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        char[] chars = sc.nextLine().toCharArray();
+        int n = sc.nextInt();
+        Map<String, Integer> map = new HashMap<>();
+        for (int i = 0; i < n; i++) {
+            String str = sc.next();
 
-        Map<String, Integer> characterMap = new HashMap<>();
-        for (char aChar : chars) {
-            characterMap.put(Character.toString(aChar).toUpperCase(), characterMap.getOrDefault(Character.toString(aChar).toUpperCase(), 0) + 1);
+            if (map.get(str) == null) {
+                map.put(str, 1);
+            } else {
+                map.put(str, map.get(str) + 1);
+            }
         }
 
-        Map.Entry<String, Integer> maxMap = Collections.max(characterMap.entrySet(), Comparator.comparingInt(Map.Entry::getValue));
-        int max = maxMap.getValue();
+        int val = 0;
+        String ans = "";
+        for (String key : map.keySet()) {
+            if (val == map.get(key)) {
+                if (ans.compareTo(key) >= 0) {
+                    ans = key;
+                }
+            } else if (val < map.get(key)) {
+                val = map.get(key);
+                ans = key;
+            }
 
-        int count = (int) characterMap.entrySet().stream().filter(entry -> entry.getValue() == max).count();
-
-        if (count > 1) {
-            System.out.println("?");
-        } else {
-            System.out.println(maxMap.getKey());
         }
 
+        System.out.println(ans);
 
     }
 }
