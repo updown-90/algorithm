@@ -10,11 +10,9 @@ public class Problem2920 {
         String inputString = sc.nextLine();
         String[] sArr = inputString.split(" ");
 
-
         boolean asc = true;
         boolean desc = true;
         for (int i = 1; i < sArr.length; i++) {
-// 1,2,3
             // 내림차순이면
             if (Integer.parseInt(sArr[i - 1]) > Integer.parseInt(sArr[i])) {
                 asc = false;
