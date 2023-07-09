@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class MajorityElement {
     public static void main(String[] args) {
-        int[] nums = {3,2,3};
+        int[] nums = {3, 2, 3};
 
         Map<Integer, Integer> map = new HashMap<>();
 

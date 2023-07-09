@@ -1,6 +1,6 @@
 package leetcode;
 
-public class searchInsertPosition {
+public class SearchInsertPosition {
     public static void main(String[] args) {
 //        숫자 = [1,3,5,6], 대상 = 5
 
