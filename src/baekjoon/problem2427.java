@@ -1,7 +1,8 @@
-import java.util.Arrays;
+package baekjoon;
+
 import java.util.Scanner;
 
-public class Fibonacci {
+public class problem2427 {
 
     public static int rec_fib(int i) {
         if (i <= 0) {
