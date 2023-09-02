@@ -1,27 +1,24 @@
 package leetcode;
 
+import java.util.Arrays;
+import java.util.Set;
+import java.util.TreeSet;
+
 public class RemoveDuplicatesFromSortedArray {
     public static void main(String[] args) {
         int[] nums = {1, 1, 2};
 
-        int[] returns = new int[nums.length];
-        int increaseNum = 0;
-        int duplicateCount = 0;
-        for (int i = 0; i < nums.length; i++) {
-            boolean duplicate = false;
-            for (int aReturn : returns) {
-                if (nums[i] == aReturn) {
-                    duplicate = true;
-                    duplicateCount++;
-                }
-            }
-
-            if (!duplicate) {
-                returns[increaseNum] = nums[i];
-                increaseNum++;
-            }
+        Set<Integer> numsSet = new TreeSet<>();
+        for (int num : nums) {
+            numsSet.add(num);
         }
 
-        System.out.println(nums.length - duplicateCount);
+        int index = 0;
+        for (Integer numSet : numsSet) {
+            nums[index] = numSet;
+            index++;
+        }
+
+        System.out.println(Arrays.toString(nums));
     }
 }
