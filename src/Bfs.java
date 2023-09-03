@@ -15,17 +15,37 @@ public class Bfs {
         graph.put("I", List.of("C", "J"));
         graph.put("J", List.of("I"));
 
-        System.out.println(bfs(graph, "A"));
+        System.out.println("BFS = " + bfs(graph, "A"));
+        System.out.println("DFS = " + dfs(graph, "A"));
     }
 
-    private static List<String> bfs(Map<String, List<String>> graph, String startNode) {
+    private static List<String> dfs(Map<String, List<String>> graph, String startNode) {
         List<String> visited = new ArrayList<>();
-        List<String> needVisit = new ArrayList<>();
+        Stack<String> needVisit = new Stack<>();
 
         needVisit.add(startNode);
 
         while (!needVisit.isEmpty()) {
-            String node = needVisit.remove(0);
+            String node = needVisit.pop();
+
+            if (!visited.contains(node)) {
+                visited.add(node);
+                List<String> strings = graph.get(node);
+                needVisit.addAll(strings);
+            }
+        }
+
+        return visited;
+    }
+
+    private static List<String> bfs(Map<String, List<String>> graph, String startNode) {
+        List<String> visited = new ArrayList<>();
+        Queue<String> needVisit = new PriorityQueue<>();
+
+        needVisit.add(startNode);
+
+        while (!needVisit.isEmpty()) {
+            String node = needVisit.poll();
 
             if (!visited.contains(node)) {
                 visited.add(node);
