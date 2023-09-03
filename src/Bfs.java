@@ -40,7 +40,7 @@ public class Bfs {
 
     private static List<String> bfs(Map<String, List<String>> graph, String startNode) {
         List<String> visited = new ArrayList<>();
-        Queue<String> needVisit = new PriorityQueue<>();
+        Queue<String> needVisit = new LinkedList<>();
 
         needVisit.add(startNode);
 
